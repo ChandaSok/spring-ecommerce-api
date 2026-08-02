@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@Tag(name = "crud")
 @RestController
 @RequestMapping("/api/v1/medias")
 @RequiredArgsConstructor

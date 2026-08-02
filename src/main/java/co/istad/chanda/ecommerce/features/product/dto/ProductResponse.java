@@ -1,6 +1,6 @@
 package co.istad.chanda.ecommerce.features.product.dto;
 
-import co.istad.chanda.ecommerce.features.tag.TagResponse;
+import co.istad.chanda.ecommerce.features.tag.dto.TagResponse;
 import co.istad.chanda.ecommerce.features.category.dto.CategoryResponse;
 
 import java.math.BigDecimal;

@@ -13,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "crud")
 @RestController
 @RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
