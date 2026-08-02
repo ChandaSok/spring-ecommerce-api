@@ -1,0 +1,34 @@
+package co.istad.chanda.ecommerce.features.order;
+
+import co.istad.chanda.ecommerce.features.product.Product;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "oder_lines")
+public class OrderLine {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private Integer qty;
+
+    @Column(nullable = false)
+    private BigDecimal unitPrice;
+
+    @ManyToOne
+    private Product product;
+
+    @ManyToOne
+    private Order order;
+
+}
