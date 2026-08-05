@@ -1,7 +1,7 @@
 package co.istad.chanda.ecommerce;
 
-import co.istad.chanda.ecommerce.entity.Category;
-import co.istad.chanda.ecommerce.repository.CategoryRepository;
+import co.istad.chanda.ecommerce.features.category.Category;
+import co.istad.chanda.ecommerce.features.category.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
