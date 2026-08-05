@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/tags")
 @RequiredArgsConstructor
@@ -46,6 +48,12 @@ public class TagController {
         Sort sortById = Sort.by(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sortById);
         return tagService.findAll(pageable);
+    }
+
+    @GetMapping("/search")
+    public List<TagResponse> search(
+            @RequestParam(required = false, defaultValue = "") String name) {
+        return tagService.search(name);
     }
 
 }

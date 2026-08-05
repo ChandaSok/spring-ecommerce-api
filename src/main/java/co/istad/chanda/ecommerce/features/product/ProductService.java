@@ -24,4 +24,9 @@ public interface ProductService {
      */
     void createNew(CreateProductRequest createProductRequest);
 
+    /**
+     * Search products by name with pagination
+     */
+    Page<ProductResponse> search(String name, int pageNumber, int pageSize);
+
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -106,11 +107,17 @@ public class CategoryServiceImpl implements CategoryService {
     // Get with pagination
     @Override
     public Page<CategoryResponse> findAll(Pageable pageable) {
-        // Get data from database
         Page<Category> categories = categoryRepository.findAll(pageable);
-
-        // បំលែង entity ទៅជា DTO
         return categories.map(categoryMapper::mapCategoryToCategoryResponse);
+    }
+
+    // Search by name
+    @Override
+    public List<CategoryResponse> search(String name) {
+        return categoryRepository.findByNameContainsIgnoreCase(name)
+                .stream()
+                .map(categoryMapper::mapCategoryToCategoryResponse)
+                .toList();
     }
 
 }

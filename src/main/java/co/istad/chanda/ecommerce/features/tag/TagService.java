@@ -5,6 +5,8 @@ import co.istad.chanda.ecommerce.features.tag.dto.TagResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface TagService {
 
     TagResponse createNew(TagRequest tagRequest);
@@ -14,6 +16,8 @@ public interface TagService {
     TagResponse findById(Integer id);
 
     Page<TagResponse> findAll(Pageable pageable);
+
+    List<TagResponse> search(String name);
 
     void deleteById(Integer id);
 }

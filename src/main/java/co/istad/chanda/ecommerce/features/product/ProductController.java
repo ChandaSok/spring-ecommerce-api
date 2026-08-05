@@ -34,6 +34,15 @@ public class ProductController {
         return productService.findAll(pageNumber, pageSize);
     }
 
+    @GetMapping("/search")
+    public Page<ProductResponse> search(
+            @RequestParam(required = false, defaultValue = "") String name,
+            @RequestParam(required = false, defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "25") int pageSize
+    ) {
+        return productService.search(name, pageNumber, pageSize);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void createNew(@Valid @RequestBody CreateProductRequest createProductRequest) {
