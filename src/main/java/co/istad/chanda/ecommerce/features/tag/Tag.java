@@ -22,6 +22,9 @@ public class Tag {
     @Column(length = 50, nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private Boolean isDeleted;
+
     @ManyToMany(mappedBy = "tags")
     private List<Product> products;
 
