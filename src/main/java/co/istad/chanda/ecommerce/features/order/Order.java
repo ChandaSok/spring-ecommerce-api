@@ -38,9 +38,9 @@ public class Order {
     @Column(nullable = false)
     private String remark;
 
-    @Column(nullable = false)
+    @Column(name = "is_delected", nullable = false)
     private Boolean isDelected;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderLine> orderLines;
 }
