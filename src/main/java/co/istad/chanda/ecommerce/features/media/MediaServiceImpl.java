@@ -178,5 +178,4 @@ public class MediaServiceImpl implements MediaService {
         return mediaLocation + mediaName + "." + mediaExtension;
     }
 
-
 }
