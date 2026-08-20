@@ -6,6 +6,8 @@ import co.istad.chanda.ecommerce.features.category.dto.UpdateCategoryRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface CategoryService {
 
     // Find by id
@@ -33,5 +35,10 @@ public interface CategoryService {
      * @return សំណុំនៃ CategoryResponse
      */
     Page<CategoryResponse> findAll(Pageable pageable);
+
+    /**
+     * ស្វែងរក category តាម keyword
+     */
+    List<CategoryResponse> search(String name);
 
 }

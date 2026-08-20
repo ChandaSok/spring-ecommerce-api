@@ -3,7 +3,6 @@ package co.istad.chanda.ecommerce.features.product;
 import co.istad.chanda.ecommerce.features.product.dto.CreateProductRequest;
 import co.istad.chanda.ecommerce.features.product.dto.PatchProductRequest;
 import co.istad.chanda.ecommerce.features.product.dto.ProductResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -33,6 +32,15 @@ public class ProductController {
             @RequestParam(required = false, defaultValue = "25") int pageSize
     ) {
         return productService.findAll(pageNumber, pageSize);
+    }
+
+    @GetMapping("/search")
+    public Page<ProductResponse> search(
+            @RequestParam(required = false, defaultValue = "") String name,
+            @RequestParam(required = false, defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "25") int pageSize
+    ) {
+        return productService.search(name, pageNumber, pageSize);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

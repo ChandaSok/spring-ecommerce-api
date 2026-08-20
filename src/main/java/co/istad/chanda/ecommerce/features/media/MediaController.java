@@ -1,7 +1,6 @@
 package co.istad.chanda.ecommerce.features.media;
 
 import co.istad.chanda.ecommerce.features.media.dto.MediaResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

@@ -3,7 +3,6 @@ package co.istad.chanda.ecommerce.features.category;
 import co.istad.chanda.ecommerce.features.category.dto.CategoryResponse;
 import co.istad.chanda.ecommerce.features.category.dto.CreateCategoryRequest;
 import co.istad.chanda.ecommerce.features.category.dto.UpdateCategoryRequest;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/categories")
@@ -26,6 +28,7 @@ public class CategoryController {
     }
 
     // Delete
+    // @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id) {
@@ -55,6 +58,14 @@ public class CategoryController {
         Sort sortById = Sort.by(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sortById);
         return categoryService.findAll(pageable);
+    }
+
+    // Search by name
+    @GetMapping("/search")
+    public List<CategoryResponse> search(
+            @RequestParam(required = false, defaultValue = "") String name
+    ) {
+        return categoryService.search(name);
     }
 
 }
