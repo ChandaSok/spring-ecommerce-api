@@ -4,6 +4,7 @@ build/
 /caches/
 /daemon/
 /native/
+/notifications/
 /wrapper/
 /keys/
 !gradle/wrapper/gradle-wrapper.jar
